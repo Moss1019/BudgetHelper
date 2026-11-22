@@ -1,0 +1,13 @@
+<Solution>
+  <Project Path="BudgetApp-lib/BudgetApp-lib.csproj" />
+  <Project Path="BudgetHelper-ef/BudgetHelper-ef.csproj" />
+  <Project Path="BudgetHelper-web/BudgetHelper-web.csproj" />
+  <Project Path="BudgetHelper-webTest/BudgetHelper-webTest.csproj" />
+  <Project Path="Elastic-lib/Elastic-lib.csproj" />
+  <Project Path="Elastic-libTest/Elastic-libTest.csproj" />
+  <Project Path="Logging-lib/Logging-lib.csproj" />
+  <Project Path="Logging-libTest/Logging-libTest.csproj" />
+  <Project Path="Logging-sink/Logging-sink.csproj" />
+  <Project Path="Messaging-libTest/Messaging-libTest.csproj" />
+  <Project Path="Messaging-lib\Messaging-lib.csproj" />
+</Solution>
