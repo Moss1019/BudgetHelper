@@ -1,10 +1,7 @@
 import SwiftUI
-import PhotosUI
 
 struct ReceiptDetectorView: View {
     @EnvironmentObject private var controller: ReceiptDetectorController
-    
-//    @Binding var selectedImageData: Data?
     
     var body: some View {
         VStack(spacing: 20) {
@@ -35,36 +32,22 @@ struct ReceiptDetectorView: View {
                     .padding()
             }
             
-            HStack(spacing: 16) {
-                Button(action: { controller.isImagePickerPresented = true }) {
-                    HStack {
-                        Image(systemName: "camera")
-                        Text("Take Photo")
-                    }
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            if let image = controller.selectedImage {
+                VStack(spacing: 12) {
+                    Button("Extract lines", action: { controller.processImageData() })
+                    
+                    Button("Clear image", action: { controller.clear() })
                 }
+                    
                 
-//                PhotosPicker(selection: $selectedImageData, matching: .images, photoLibrary: .shared()) {
-//                    HStack {
-//                        Image(systemName: "photo.on.rectangle.angled")
-//                        Text("Select Photo")
-//                    }
-//                    .font(.headline)
-//                    .frame(maxWidth: .infinity)
-//                    .frame(height: 50)
-//                    .background(Color.green)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(10)
-//                }
+            } else {
+                Button("Choose photo", action: { controller.isImagePickerPresented = true })
             }
-            .padding(.horizontal)
             
             Spacer()
+        }
+        .sheet(isPresented: $controller.isImagePickerPresented) {
+            PhotoPicker(image: $controller.selectedImage, imageData: $controller.selectedImageData)
         }
         .padding(.bottom)
     }
